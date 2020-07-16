@@ -1,4 +1,6 @@
-provider "aws" {}
+provider "aws" {
+  version = "2.59"
+}
 
 data "aws_ami" "centos" {
   most_recent = true
@@ -13,15 +15,15 @@ data "aws_ami" "centos" {
   }
 }
 
-resource "aws_key_pair" "us-east-1-key" {
-  key_name   = "bastion_bastion"
+resource "aws_key_pair" "jenkins_key" {
+  key_name   = "cluster"
   public_key = "${file("/home/tuubayalcin/.ssh/id_rsa.pub")}"
 }
 
 resource "aws_instance" "jenkins" {
   ami           = "${data.aws_ami.centos.id}"
   instance_type = "t2.micro"
-  key_name      = "${aws_key_pair.us-east-1-key.key_name}"
+  key_name      = "${aws_key_pair.jenkins_key.key_name}"
   tags = {
     Name = "Jenkins"
   }
