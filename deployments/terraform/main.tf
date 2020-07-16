@@ -23,7 +23,7 @@ resource "aws_key_pair" "us-east-1-key" {
 resource "aws_instance" "jenkins" {
   ami           = "${data.aws_ami.centos.id}"
   instance_type = "t2.micro"
-  key_name      =   "${aws_key_pair.us-east-1-key.key_name}"
+  key_name      = "${aws_key_pair.us-east-1-key.key_name}"
   tags = {
     Name = "Jenkins"
   }
