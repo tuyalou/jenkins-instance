@@ -78,7 +78,6 @@ def slavePodTemplate = """
                                 #!/bin/bash
                                 export AWS_DEFAULT_REGION=${aws_region}
                                 source ./setenv.sh dev.tfvars
-                                terraform  apply -var-file prod.tfvars
                                 terraform apply -auto-approve 
                                 """
                             } else {
