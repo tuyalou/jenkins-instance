@@ -15,7 +15,7 @@ data "aws_ami" "centos" {
 
 resource "aws_key_pair" "us-east-1-key" {
   key_name   = "bastion_bastion"
-  public_key = "${file("~/.ssh/id_rsa.pub")}"
+  public_key = "${file("/home/tuubayalcin/.ssh/id_rsa.pub")}"
 }
 
 resource "aws_instance" "jenkins" {
