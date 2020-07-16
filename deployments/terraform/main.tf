@@ -34,6 +34,7 @@ resource "aws_instance" "jenkins" {
   tags = {
     Name = "Jenkins"
   }
+  }
 }
 
   # resource "aws_instance" "jenkins" {
