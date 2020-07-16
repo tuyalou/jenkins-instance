@@ -15,14 +15,15 @@ data "aws_ami" "centos" {
   }
 }
 
-resource "aws_key_pair" "jenkins_key" {
-  key_name   = "cluster"
-}
+# resource "aws_key_pair" "jenkins_key" {
+#   public_key = "${file("/home/tuubayalcin/.ssh/id_rsa.pub")}"
+#   key_name   = "cluster"
+# }
 
 resource "aws_instance" "jenkins" {
   ami           = "${data.aws_ami.centos.id}"
   instance_type = "t2.micro"
-  key_name      = "${aws_key_pair.jenkins_key.key_name}"
+  # key_name      = "${aws_key_pair.jenkins_key.key_name}"
   tags = {
     Name = "Jenkins"
   }
