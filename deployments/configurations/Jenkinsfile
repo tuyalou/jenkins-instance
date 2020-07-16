@@ -67,7 +67,7 @@ def slavePodTemplate = """
         }
 
         container("buildtools") {
-            dir('deployments/terraform') {
+            dir('deployments/configurations') {
                 withCredentials([usernamePassword(credentialsId: 'packer-build-creds', 
                     passwordVariable: 'AWS_SECRET_ACCESS_KEY', usernameVariable: 'AWS_ACCESS_KEY_ID')]) {
                     stage("Terraform Apply/plan") {
