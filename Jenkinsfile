@@ -67,7 +67,7 @@ def slavePodTemplate = """
         }
 
         container("buildtools") {
-            dir('deployments/terraform') {
+            dir('deployments') {
                 withCredentials([usernamePassword(credentialsId: 'packer-build-creds', 
                     passwordVariable: 'AWS_SECRET_ACCESS_KEY', usernameVariable: 'AWS_ACCESS_KEY_ID')]) {
                     stage("Terraform Apply/plan") {
@@ -77,7 +77,7 @@ def slavePodTemplate = """
                                 sh """
                                 #!/bin/bash
                                 export AWS_DEFAULT_REGION=${aws_region}
-                                source ./setenv.sh dev.tfvars
+                                source setenv.sh configurations/dev.tfvars
                                 terraform apply -auto-approve 
                                 """
                             } else {
@@ -87,7 +87,7 @@ def slavePodTemplate = """
                                 set +ex
                                 ls -l
                                 export AWS_DEFAULT_REGION=${aws_region}
-                                source ./setenv.sh dev.tfvars
+                                source setenv.sh configurations/dev.tfvars
                                 terraform plan
                                 """
                             }
@@ -100,7 +100,7 @@ def slavePodTemplate = """
                             sh """
                             #!/bin/bash
                             export AWS_DEFAULT_REGION=${aws_region}
-                            source ./setenv.sh dev.tfvars
+                            source setenv.sh configurations/dev.tfvars
                             terraform destroy -auto-approve 
                             """
                         } else {
