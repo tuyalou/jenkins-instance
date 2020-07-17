@@ -1,4 +1,3 @@
-
 environment = "stage" 
 s3_bucket = "jenkins-instance-stage" 
 s3_folder_project = "jenkins" 
