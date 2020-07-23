@@ -28,7 +28,7 @@ resource "aws_instance" "jenkins" {
     Name = "Jenkins"
   }
 }
-variable "ami" = {}
+variable "ami" {}
 
 
   # resource "aws_instance" "jenkins" {
