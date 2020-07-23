@@ -15,10 +15,6 @@ provider "aws" {
 #   }
 # }
 
-# resource "aws_key_pair" "jenkins_key" {
-#   public_key = "${file("/home/tuubayalcin/.ssh/id_rsa.pub")}"
-#   key_name   = "cluster"
-# }
 
 resource "aws_instance" "jenkins" {
   ami           = "${var.ami}"
