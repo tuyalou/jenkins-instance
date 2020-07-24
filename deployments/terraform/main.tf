@@ -21,7 +21,7 @@ resource "aws_instance" "jenkins" {
   instance_type = "t2.micro"
   # key_name      = "${aws_key_pair.jenkins_key.key_name}"
   tags = {
-    Name = "var.instance_name"
+    Name = "${var.instance_name}"
   }
 }
 variable "ami" {}
